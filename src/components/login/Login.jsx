@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useContext, useRef } from "react";
 import Header from "../../common/header/Header";
 import logo from "./assets/github.webp";
 import github from "./assets/github.png";
 import linkedin from "./assets/linkedin.png";
+import user from "../../contexts/userContext";
+import axios from "axios";
 
 const Login = () => {
+  const { userName, setUserName, setUserData } = useContext(user);
+
+  const userRef = useRef(null);
+
+  const getUserDetails = async (e) => {
+    e.preventDefault();
+    const response = await axios.get(
+      `https://fyle-backend-1300.onrender.com/${userRef.current.value}}`
+    );
+    setUserData(response.data);
+  };
+
   return (
     <>
       <Header />
@@ -24,7 +38,10 @@ const Login = () => {
             <p class="mb-8 leading-relaxed">
               Enter the username of the GitHub user you want to get details of.
             </p>
-            <div class="flex w-full md:justify-start justify-center items-end">
+            <form
+              onSubmit={getUserDetails}
+              class="flex w-full md:justify-start justify-center items-end"
+            >
               <div class="relative mr-4 lg:w-full xl:w-1/2 w-2/4">
                 <label for="hero-field" class="leading-7 text-sm text-gray-400">
                   Github Username
@@ -32,14 +49,18 @@ const Login = () => {
                 <input
                   type="text"
                   id="hero-field"
-                  name="hero-field"
+                  name=""
                   class="w-full bg-gray-800 rounded border bg-opacity-40 border-gray-700 focus:ring-2 focus:ring-indigo-900 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  ref={userRef}
                 />
               </div>
-              <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+              <button
+                type="submit"
+                class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+              >
                 Get Details
               </button>
-            </div>
+            </form>
             <p class="text-sm mt-2 text-gray-500 mb-8 w-full">
               github.com/Username
             </p>
