@@ -4,16 +4,36 @@ import Repositories from "./Repositories";
 import user from "../../contexts/userContext";
 
 const Profile = () => {
-  const { userData } = useContext(user);
+  const { userData, setUserData } = useContext(user);
 
   return (
     <>
-      {userData.msg === "Not Found" ? (
+      {userData.msg === "not found" ? (
         <Error />
       ) : (
         <>
           <section class="text-gray-400 bg-gray-900 body-font">
-            <div class="container px-5 py-24 mx-auto">
+            <button
+              onClick={() => {
+                setUserData({ msg: "", data: {} });
+              }}
+              class="text-indigo-400 absolute top-2 md:top-5 right-5 w-52 cursor-pointer justify-center flex items-center"
+            >
+              Search New User
+              <svg
+                class="w-4 h-4 ml-2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M5 12h14"></path>
+                <path d="M12 5l7 7-7 7"></path>
+              </svg>
+            </button>
+            <div class="container px-5 py-10 mx-auto">
               <div class="flex flex-col text-center w-full mb-20">
                 <h1 class="text-2xl font-medium title-font mb-4 text-white tracking-widest">
                   GitHub User
@@ -46,7 +66,7 @@ const Profile = () => {
               </div>
             </div>
           </section>
-          <Repositories />)
+          <Repositories />
         </>
       )}
     </>

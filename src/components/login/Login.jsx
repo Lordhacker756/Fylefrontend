@@ -1,22 +1,36 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import Header from "../../common/header/Header";
 import logo from "./assets/github.webp";
 import github from "./assets/github.png";
 import linkedin from "./assets/linkedin.png";
 import user from "../../contexts/userContext";
-import axios from "axios";
 
 const Login = () => {
-  const { userName, setUserName, setUserData } = useContext(user);
-
+  const { userName, userData, setUserName, setUserData } = useContext(user);
+  const [loading, setLoading] = useState(false);
   const userRef = useRef(null);
 
   const getUserDetails = async (e) => {
     e.preventDefault();
-    const response = await axios.get(
-      `https://fyle-backend-1300.onrender.com/${userRef.current.value}}`
-    );
-    setUserData(response.data);
+    if (!userRef.current.value) {
+      const element = document.getElementById("hero-field");
+      element.classList.add("border-red-500");
+      element.placeholder = "Please enter a valid username!!";
+    } else {
+      setLoading(true);
+      const response = await fetch(
+        `https://fyle-backend-1300.onrender.com/${userRef.current.value}`
+      );
+      const data = await response.json();
+      console.log(data.msg === "No User Found.!");
+      if (data.msg === "No User Found.!") {
+        setUserData({ msg: "not found", data: {} });
+      } else {
+        setUserData({ msg: data.msg, data: data?.data.data });
+      }
+      console.log(data.msg);
+      setLoading(false);
+    }
   };
 
   return (
@@ -49,16 +63,16 @@ const Login = () => {
                 <input
                   type="text"
                   id="hero-field"
-                  name=""
                   class="w-full bg-gray-800 rounded border bg-opacity-40 border-gray-700 focus:ring-2 focus:ring-indigo-900 focus:bg-transparent focus:border-indigo-500 text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   ref={userRef}
+                  minLength="3"
                 />
               </div>
               <button
                 type="submit"
                 class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
               >
-                Get Details
+                {loading ? "Loading..." : "Get Details"}
               </button>
             </form>
             <p class="text-sm mt-2 text-gray-500 mb-8 w-full">
