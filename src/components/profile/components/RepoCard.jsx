@@ -1,6 +1,6 @@
 import React from "react";
 
-const RepoCard = () => {
+const RepoCard = ({ title, description, link }) => {
   return (
     <div class="p-4 md:w-1/3">
       <div class="flex rounded-lg h-full bg-gray-800 bg-opacity-60 p-8 flex-col">
@@ -18,17 +18,12 @@ const RepoCard = () => {
               <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
             </svg>
           </div>
-          <h2 class="text-white text-lg title-font font-medium">
-            Shooting Stars
-          </h2>
+          <h2 class="text-white text-lg title-font font-medium">{title}</h2>
         </div>
         <div class="flex-grow">
-          <p class="leading-relaxed text-base">
-            Blue bottle crucifix vinyl post-ironic four dollar toast vegan
-            taxidermy. Gastropub indxgo juice poutine.
-          </p>
-          <a class="mt-3 text-indigo-400 inline-flex items-center">
-            Learn More
+          <p class="leading-relaxed text-base">{description}</p>
+          <a href={link} class="mt-3 text-indigo-400 inline-flex items-center">
+            View Repository
             <svg
               fill="none"
               stroke="currentColor"

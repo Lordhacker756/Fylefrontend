@@ -5,7 +5,8 @@ import user from "../../contexts/userContext";
 
 const Profile = () => {
   const { userData, setUserData } = useContext(user);
-
+  const { data } = userData;
+  console.log(data);
   return (
     <>
       {userData.msg === "not found" ? (
@@ -45,21 +46,47 @@ const Profile = () => {
               <div class="flex flex-wrap -m-4">
                 <div class="p-4 lg:w-1/2">
                   <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
-                    <img
-                      alt="team"
-                      class="flex-shrink-0 rounded-lg w-48 h-48 object-cover object-center sm:mb-0 mb-4"
-                      src="https://dummyimage.com/200x200"
-                    />
+                    <a
+                      className="w-[350px]"
+                      href={data.html_url}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      <img
+                        alt="team"
+                        class="flex-shrink-0 rounded-lg cursor-pointer  object-cover object-center sm:mb-0 mb-4 max-w-[100%]"
+                        src={data.avatar_url}
+                      />
+                    </a>
                     <div class="flex-grow sm:pl-8">
                       <h2 class="title-font font-medium text-lg text-white">
-                        Holden Caulfield
+                        {data.login}
                       </h2>
-                      <h3 class="text-gray-500 mb-3">UI Developer</h3>
-                      <p class="mb-4">
-                        DIY tote bag drinking vinegar cronut adaptogen squid
-                        fanny pack vaporware.
-                      </p>
-                      <span class="inline-flex">Location</span>
+                      <h3 class="text-gray-500 mb-3">{data.company}</h3>
+                      <p class="mb-4">{data.bio}</p>
+                      <span class="inline-flex">🗺{data.location}</span>
+                      {data.email && (
+                        <>
+                          <br />
+                          <span class="inline-flex">📩Email: {data.email}</span>
+                        </>
+                      )}
+                      {data.blog && (
+                        <>
+                          <br />
+                          <span class="inline-flex">
+                            <a href={data.blog}>⛓Blog</a>
+                          </span>
+                        </>
+                      )}
+                      {data.twitter_username && (
+                        <>
+                          <br />
+                          <span class="inline-flex">
+                            Twitter - @{data.twitter_username}
+                          </span>
+                        </>
+                      )}
                     </div>
                   </div>
                 </div>

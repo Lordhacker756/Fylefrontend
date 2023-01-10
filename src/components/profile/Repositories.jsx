@@ -1,7 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import RepoCard from "./components/RepoCard";
+import user from "../../contexts/userContext";
+
+const getRepositories = async (userName) => {
+  const response = await fetch(
+    `https://fyle-backend-1300.onrender.com/${userName}/repos`
+  );
+  const data = await response.json();
+  return data.data;
+};
+
+//https://api.github.com/repos/Lordhacker756/open-dashboard/languages
 
 const Repositories = () => {
+  const { userData } = useContext(user);
+  const repositories = getRepositories(userData.data.login);
   return (
     <section class="text-gray-400 bg-gray-900 body-font pb-5">
       <div class="container px-5  mx-auto flex flex-wrap">
@@ -13,13 +26,7 @@ const Repositories = () => {
             Repositories
           </h1>
         </div>
-        <div class="flex flex-wrap -m-4">
-          <RepoCard />
-          <RepoCard />
-          <RepoCard />
-          <RepoCard />
-          <RepoCard />
-        </div>
+        <div class="flex flex-wrap -m-4"></div>
       </div>
     </section>
   );

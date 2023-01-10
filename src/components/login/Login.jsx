@@ -6,7 +6,7 @@ import linkedin from "./assets/linkedin.png";
 import user from "../../contexts/userContext";
 
 const Login = () => {
-  const { userName, userData, setUserName, setUserData } = useContext(user);
+  const { setUserData } = useContext(user);
   const [loading, setLoading] = useState(false);
   const userRef = useRef(null);
 
@@ -26,7 +26,7 @@ const Login = () => {
       if (data.msg === "No User Found.!") {
         setUserData({ msg: "not found", data: {} });
       } else {
-        setUserData({ msg: data.msg, data: data?.data.data });
+        setUserData({ msg: data.msg, data: data.data });
       }
       console.log(data.msg);
       setLoading(false);
