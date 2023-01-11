@@ -17,7 +17,7 @@ const RepoCard = ({ title, description, link, languages_url }) => {
       }
     };
     getRepoLanguage(languages_url); // We are calling the function to fetch the languages of the repository, we are passing the languages_url of the repository as parameter
-  }, []);
+  }, [languages_url]);
 
   return (
     <div class="p-4 md:w-1/3">

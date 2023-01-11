@@ -8,7 +8,7 @@ const Profile = () => {
   const { userData, setUserData } = useContext(user); // This is the user data, fetched from the user context and this will be used to show the profile of the user and to share the user data to all the children components of this component
   const { data } = userData; // This is the user data, fetched from the user data state and this will be used to show the profile of the user
   return (
-    <>
+    <div className=" bg-gray-900 body-font h-[100vh]">
       {userData.msg === "not found" ? (
         // If the user data is not found, show the error component
         <Error />
@@ -99,7 +99,7 @@ const Profile = () => {
           <Repositories />
         </>
       )}
-    </>
+    </div>
   );
 };
 
