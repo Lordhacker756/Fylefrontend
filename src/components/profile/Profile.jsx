@@ -3,16 +3,18 @@ import Error from "./Error";
 import Repositories from "./Repositories";
 import user from "../../contexts/userContext";
 
+// This is the profile component, this will be used to show the profile of the user
 const Profile = () => {
-  const { userData, setUserData } = useContext(user);
-  const { data } = userData;
-  console.log(data);
+  const { userData, setUserData } = useContext(user); // This is the user data, fetched from the user context and this will be used to show the profile of the user and to share the user data to all the children components of this component
+  const { data } = userData; // This is the user data, fetched from the user data state and this will be used to show the profile of the user
   return (
     <>
       {userData.msg === "not found" ? (
+        // If the user data is not found, show the error component
         <Error />
       ) : (
         <>
+          {/* Else show the details of the user, from the data extracted from the context */}
           <section class="text-gray-400 bg-gray-900 body-font">
             <button
               onClick={() => {
@@ -93,6 +95,7 @@ const Profile = () => {
               </div>
             </div>
           </section>
+          {/* Component to show the list of all the repositories of the user */}
           <Repositories />
         </>
       )}

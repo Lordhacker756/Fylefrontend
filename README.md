@@ -7,7 +7,7 @@ This is a **Fullstack App** which uses GitHub API under the hood to get the data
 In the frontend part of the app, the technologies used are as follows:
 
 - ReactJS - For building the complete web app
-- ExpressJS - For building the backend of this app
+- ExpressJS - For building the backend of this app ([backend repo](https://github.com/Lordhacker756/FyleBackend)🔗)
 - TailwindCSS - For styling the webapp
 - Vercel - For deployment
 
@@ -15,7 +15,7 @@ In the frontend part of the app, the technologies used are as follows:
 
 Here are the most important points I learnt while building the frontend of this app
 
-- Having a proper folder structure that is both develope friendly and scaleable.
+- Having a proper folder structure that is both developer friendly and scaleable.
 - Creating controllers in backend made using ExpressJS
 - Using context to make the data available to all the components insted of prop drilling.
 - GitHub - To properly maintain the codebase, and have the ability to rollback in case of any error.

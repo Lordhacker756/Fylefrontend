@@ -14,10 +14,12 @@ const getRepoLanguage = async (repoName) => {
   }
 };
 
+// This is the component that will display all the repositories of the user
 const Repositories = () => {
-  const [repositories, setRepositories] = useState([]);
-  const { userData } = useContext(user);
+  const [repositories, setRepositories] = useState([]); // This is the state that will hold the repositories of the user
+  const { userData } = useContext(user); // We are getting the user data from the context
   useEffect(() => {
+    // This is the function that will fetch the repositories of the user
     const getRepositories = async (userName) => {
       try {
         const response = await fetch(`http://localhost:4000/${userName}/repos`);
@@ -27,8 +29,7 @@ const Repositories = () => {
         console.log(err);
       }
     };
-
-    getRepositories(userData.data.login);
+    getRepositories(userData.data.login); // We are calling the function to fetch the repositories of the user, we are passing the username of the user as parameter
   }, []);
 
   return (
@@ -43,11 +44,12 @@ const Repositories = () => {
           </h1>
         </div>
         <div class="flex flex-wrap -m-4">
+          {/* Here we are mapping through the repositories array and displaying the repositories */}
           {repositories ? (
             repositories.map(
               ({ name, html_url, description, languages_url }, index) => {
                 return (
-                  <RepoCard
+                  <RepoCard // We are passing the props to the RepoCard component by destructuring the object
                     title={name}
                     description={description}
                     link={html_url}
@@ -58,11 +60,12 @@ const Repositories = () => {
               }
             )
           ) : (
-            <h1>Loading</h1>
+            <h1>Loading</h1> // If the repositories are not fetched, show loading
           )}
         </div>
       </div>
       <div class="flex justify-center">
+        {/*  This is the pagination component */}
         <nav aria-label="Page navigation example">
           <ul class="flex list-style-none">
             <li class="page-item disabled">

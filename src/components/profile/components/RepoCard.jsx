@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from "react";
 
 const RepoCard = ({ title, description, link, languages_url }) => {
-  const [languages, setLanguages] = useState([]);
+  const [languages, setLanguages] = useState([]); // This is the state that will hold the languages of the repository
 
   useEffect(() => {
+    // This is the function that will fetch the languages of the repository
     const getRepoLanguage = async () => {
       try {
         const response = await fetch(
           "http://localhost:4000/repos/Lordhacker756/open-dashboard/languages"
         );
         const data = await response.json();
-        setLanguages(data.data);
+        setLanguages(data.data); // We are setting the languages state with the data we got from the API
       } catch (err) {
         console.log(err);
       }
     };
-    getRepoLanguage(languages_url);
+    getRepoLanguage(languages_url); // We are calling the function to fetch the languages of the repository, we are passing the languages_url of the repository as parameter
   }, []);
 
   return (
