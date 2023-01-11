@@ -39,24 +39,24 @@ const Profile = () => {
             <div class="container px-5 py-10 mx-auto">
               <div class="flex flex-col text-center w-full mb-20">
                 <h1 class="text-2xl font-medium title-font mb-4 text-white tracking-widest">
-                  GitHub User
+                  {data.name}
                 </h1>
                 <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
-                  Here are the details of the GitHub user you searched for.
+                  Here are the details of the repositories of {data.name}
                 </p>
               </div>
               <div class="flex flex-wrap -m-4">
                 <div class="p-4 lg:w-1/2">
                   <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
                     <a
-                      className="w-[350px]"
+                      className="w-[250px]"
                       href={data.html_url}
                       target="_blank"
                       rel="noreferrer"
                     >
                       <img
                         alt="team"
-                        class="flex-shrink-0 rounded-lg cursor-pointer  object-cover object-center sm:mb-0 mb-4 max-w-[100%]"
+                        class="flex-shrink-0 rounded-lg cursor-pointer object-cover sm:mb-0 mb-4 max-w-[100%]"
                         src={data.avatar_url}
                       />
                     </a>
