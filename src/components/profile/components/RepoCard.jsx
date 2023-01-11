@@ -1,6 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const RepoCard = ({ title, description, link }) => {
+const RepoCard = ({ title, description, link, languages_url }) => {
+  const [languages, setLanguages] = useState([]);
+
+  useEffect(() => {
+    const getRepoLanguage = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:4000/repos/Lordhacker756/open-dashboard/languages"
+        );
+        const data = await response.json();
+        setLanguages(data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getRepoLanguage(languages_url);
+  }, []);
+
   return (
     <div class="p-4 md:w-1/3">
       <div class="flex rounded-lg h-full bg-gray-800 bg-opacity-60 p-8 flex-col">
@@ -21,8 +38,28 @@ const RepoCard = ({ title, description, link }) => {
           <h2 class="text-white text-lg title-font font-medium">{title}</h2>
         </div>
         <div class="flex-grow">
-          <p class="leading-relaxed text-base">{description}</p>
-          <a href={link} class="mt-3 text-indigo-400 inline-flex items-center">
+          <p class="leading-relaxed text-base">
+            {!description
+              ? "No description available for the repository"
+              : description}
+          </p>
+          <div className="languages my-2 grid grid-cols-4 gap-1">
+            {!languages ? (
+              <p>Loading Languages...</p>
+            ) : (
+              languages.map((language) => {
+                return (
+                  <button
+                    type="button"
+                    class="block px-3 py-[2px] border-[1px] border-green-500 text-green-500 font-medium text-[8px] uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                  >
+                    {language}
+                  </button>
+                );
+              })
+            )}
+          </div>
+          <a href={link} class=" text-indigo-400 inline-flex items-center">
             View Repository
             <svg
               fill="none"

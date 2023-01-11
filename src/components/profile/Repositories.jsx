@@ -1,20 +1,36 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import RepoCard from "./components/RepoCard";
 import user from "../../contexts/userContext";
 
-const getRepositories = async (userName) => {
-  const response = await fetch(
-    `https://fyle-backend-1300.onrender.com/${userName}/repos`
-  );
-  const data = await response.json();
-  return data.data;
+const getRepoLanguage = async (repoName) => {
+  try {
+    const response = await fetch(
+      "http://localhost:4000/repos/Lordhacker756/open-dashboard/languages"
+    );
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
-//https://api.github.com/repos/Lordhacker756/open-dashboard/languages
-
 const Repositories = () => {
+  const [repositories, setRepositories] = useState([]);
   const { userData } = useContext(user);
-  const repositories = getRepositories(userData.data.login);
+  useEffect(() => {
+    const getRepositories = async (userName) => {
+      try {
+        const response = await fetch(`http://localhost:4000/${userName}/repos`);
+        const data = await response.json();
+        setRepositories(data.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    getRepositories(userData.data.login);
+  }, []);
+
   return (
     <section class="text-gray-400 bg-gray-900 body-font pb-5">
       <div class="container px-5  mx-auto flex flex-wrap">
@@ -26,7 +42,25 @@ const Repositories = () => {
             Repositories
           </h1>
         </div>
-        <div class="flex flex-wrap -m-4"></div>
+        <div class="flex flex-wrap -m-4">
+          {repositories ? (
+            repositories.map(
+              ({ name, html_url, description, languages_url }, index) => {
+                return (
+                  <RepoCard
+                    title={name}
+                    description={description}
+                    link={html_url}
+                    languages={languages_url}
+                    key={index}
+                  />
+                );
+              }
+            )
+          ) : (
+            <h1>Loading</h1>
+          )}
+        </div>
       </div>
     </section>
   );
