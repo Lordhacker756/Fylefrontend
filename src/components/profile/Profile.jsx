@@ -15,16 +15,16 @@ const Profile = () => {
       ) : (
         <>
           {/* Else show the details of the user, from the data extracted from the context */}
-          <section class="text-gray-400 bg-gray-900 body-font">
+          <section className="text-gray-400 bg-gray-900 body-font">
             <button
               onClick={() => {
                 setUserData({ msg: "", data: {} });
               }}
-              class="text-indigo-400 absolute top-2 md:top-5 right-5 w-52 cursor-pointer justify-center flex items-center"
+              className="text-indigo-400 absolute top-2 md:top-5 right-5 w-52 cursor-pointer justify-center flex items-center"
             >
               Search New User
               <svg
-                class="w-4 h-4 ml-2"
+                className="w-4 h-4 ml-2"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
                 stroke-width="2"
@@ -36,18 +36,18 @@ const Profile = () => {
                 <path d="M12 5l7 7-7 7"></path>
               </svg>
             </button>
-            <div class="container px-5 py-10 mx-auto">
-              <div class="flex flex-col text-center w-full mb-20">
-                <h1 class="text-2xl font-medium title-font mb-4 text-white tracking-widest">
+            <div className="container px-5 py-10 mx-auto">
+              <div className="flex flex-col text-center w-full mb-20">
+                <h1 className="text-2xl font-medium title-font mb-4 text-white tracking-widest">
                   {data.name}
                 </h1>
-                <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+                <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
                   Here are the details of the repositories of {data.name}
                 </p>
               </div>
-              <div class="flex flex-wrap -m-4">
-                <div class="p-4 lg:w-1/2">
-                  <div class="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
+              <div className="flex flex-wrap -m-4">
+                <div className="p-4 lg:w-1/2">
+                  <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left md:grid md:grid-cols-2">
                     <a
                       className="w-[250px]"
                       href={data.html_url}
@@ -56,27 +56,29 @@ const Profile = () => {
                     >
                       <img
                         alt="team"
-                        class="flex-shrink-0 rounded-lg cursor-pointer object-cover sm:mb-0 mb-4 max-w-[100%]"
+                        className="flex-shrink-0 rounded-lg cursor-pointer object-cover sm:mb-0 mb-4 max-w-[100%]"
                         src={data.avatar_url}
                       />
                     </a>
-                    <div class="flex-grow sm:pl-8">
-                      <h2 class="title-font font-medium text-lg text-white">
+                    <div className="flex-grow sm:pl-8 md:pl-0">
+                      <h2 className="title-font font-medium text-lg text-white">
                         {data.login}
                       </h2>
-                      <h3 class="text-gray-500 mb-3">{data.company}</h3>
-                      <p class="mb-4">{data.bio}</p>
-                      <span class="inline-flex">🗺{data.location}</span>
+                      <h3 className="text-gray-500 mb-3">{data.company}</h3>
+                      <p className="mb-4">{data.bio}</p>
+                      <span className="inline-flex">🗺{data.location}</span>
                       {data.email && (
                         <>
                           <br />
-                          <span class="inline-flex">📩Email: {data.email}</span>
+                          <span className="inline-flex">
+                            📩Email: {data.email}
+                          </span>
                         </>
                       )}
                       {data.blog && (
                         <>
                           <br />
-                          <span class="inline-flex">
+                          <span className="inline-flex">
                             <a href={data.blog}>⛓Blog</a>
                           </span>
                         </>
@@ -84,7 +86,7 @@ const Profile = () => {
                       {data.twitter_username && (
                         <>
                           <br />
-                          <span class="inline-flex">
+                          <span className="inline-flex">
                             Twitter - @{data.twitter_username}
                           </span>
                         </>
