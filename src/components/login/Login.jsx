@@ -19,7 +19,7 @@ const Login = () => {
     } else {
       setLoading(true);
       const response = await fetch(
-        `http://localhost:4000/${userRef.current.value}`
+        `https://fyle-backend-1300.onrender.com/${userRef.current.value}`
       );
       const data = await response.json();
       console.log(data.msg === "No User Found.!");

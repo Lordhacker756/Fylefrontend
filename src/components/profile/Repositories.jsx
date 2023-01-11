@@ -5,10 +5,9 @@ import user from "../../contexts/userContext";
 // This is the component that will display all the repositories of the user
 const Repositories = () => {
   const [repositories, setRepositories] = useState([]); // This is the state that will hold the repositories of the user
-
   const [pagination, setPagination] = useState({
     currentPage: 1,
-    totalPages: 30,
+    totalPages: 0,
     itemPerPage: 10,
   });
   const { userData } = useContext(user); // We are getting the user data from the context
@@ -16,7 +15,9 @@ const Repositories = () => {
     // This is the function that will fetch the repositories of the user
     const getRepositories = async (userName) => {
       try {
-        const response = await fetch(`http://localhost:4000/${userName}/repos`);
+        const response = await fetch(
+          `https://fyle-backend-1300.onrender.com/${userName}/repos`
+        );
         const data = await response.json();
         setRepositories(data.data);
         setPagination({
@@ -66,6 +67,7 @@ const Repositories = () => {
                       description={description}
                       link={html_url}
                       languages={languages_url}
+                      user={userData.data.login}
                       key={index}
                     />
                   );

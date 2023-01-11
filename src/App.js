@@ -19,7 +19,7 @@ function App() {
       {/* This is the provider for the user data, this will be used to share the user data to all the children components */}
       <user.Provider value={{ setUserName, setUserData, userData, userName }}>
         {/* If the UserData is present, show the profile of the user, else go to the login page to take the username from user */}
-        {!userData.msg ? <Profile /> : <Login />}
+        {userData.msg ? <Profile /> : <Login />}
       </user.Provider>
     </div>
   );
