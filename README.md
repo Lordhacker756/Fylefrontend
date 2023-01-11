@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# Get the information about any GitHub User!🔍
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a **Fullstack App** which uses GitHub API under the hood to get the data of the user one searches for
 
-## Available Scripts
+### Technologies Used 👩‍💻
 
-In the project directory, you can run:
+In the frontend part of the app, the technologies used are as follows:
 
-### `npm start`
+- ReactJS - For building the complete web app
+- ExpressJS - For building the backend of this app
+- TailwindCSS - For styling the webapp
+- Vercel - For deployment
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### What I got to learn from this project 💡
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Here are the most important points I learnt while building the frontend of this app
 
-### `npm test`
+- Having a proper folder structure that is both develope friendly and scaleable.
+- Creating controllers in backend made using ExpressJS
+- Using context to make the data available to all the components insted of prop drilling.
+- GitHub - To properly maintain the codebase, and have the ability to rollback in case of any error.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### How to use this project 😄
 
-### `npm run build`
+There are two ways to access this app, one is to clone the repository and run it in your own local system and other is simply clicking on the link of the hosted app.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+##### Here's how to set up the app on your local machine 💻
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Fork the repository (If you'd also like to contribute the repo)
+- Clone the repository to your local system, using the following command (Replace the URL with the URL of your forked repository) ```git clone https://github.com/{Your Username}/Fylefrontend```
+- Navigate to the project directory using the following command ```cd Fylefrontend```
+- Install all the dependencies using the following command ```npm install```
+- Run the app using the following command ```npm start```
+- The app will be running on the following URL ```http://localhost:3000```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+##### Here's how to access the App directly!😎
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Simply go to this [url](https://fylefrontend.vercel.app/https:/)
