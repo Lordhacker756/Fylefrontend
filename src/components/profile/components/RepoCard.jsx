@@ -7,10 +7,11 @@ const RepoCard = ({ title, description, link, languages_url, user }) => {
     const getRepoLanguage = async () => {
       try {
         const response = await fetch(
-          `https://fyle-backend-1300.onrender.com/repos/${user}/${title}/languages`
+          `http://localhost:4000/repos/${user}/${title}/topics`
         );
         const data = await response.json();
         setLanguages(Object.keys(data.data)); // We are setting the languages state with the data we got from the API
+        console.log(languages);
       } catch (err) {
         console.log(err);
       }

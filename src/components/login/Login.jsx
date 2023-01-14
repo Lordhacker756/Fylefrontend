@@ -19,7 +19,7 @@ const Login = () => {
     } else {
       setLoading(true);
       const response = await fetch(
-        `https://fyle-backend-1300.onrender.com/${userRef.current.value}`
+        `http://localhost:4000/${userRef.current.value}`
       );
       const data = await response.json();
 

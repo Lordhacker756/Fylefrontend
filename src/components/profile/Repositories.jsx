@@ -17,9 +17,7 @@ const Repositories = () => {
     const getRepositories = async (userName) => {
       try {
         setLoading(true); // We are setting the loading state to true
-        const response = await fetch(
-          `https://fyle-backend-1300.onrender.com/${userName}/repos`
-        );
+        const response = await fetch(`http://localhost:4000/${userName}/repos`);
         const data = await response.json();
         setRepositories(data.data);
         setPagination({
