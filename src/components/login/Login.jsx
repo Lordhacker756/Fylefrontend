@@ -28,7 +28,6 @@ const Login = () => {
       } else {
         setUserData({ msg: data.msg, data: data.data });
       }
-
       setLoading(false);
     }
   };

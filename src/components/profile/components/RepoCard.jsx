@@ -10,8 +10,8 @@ const RepoCard = ({ title, description, link, languages_url, user }) => {
           `https://fyle-backend-1300.onrender.com/repos/${user}/${title}/topics`
         );
         const data = await response.json();
-        setLanguages(Object.keys(data.data.names)); // We are setting the languages state with the data we got from the API
-        console.log(languages);
+        console.log(data.data.names.length === 0);
+        setLanguages(data.data.names); // We are setting the languages state with the data we got from the API
       } catch (err) {
         console.log(err);
       }
@@ -45,8 +45,13 @@ const RepoCard = ({ title, description, link, languages_url, user }) => {
               : description}
           </p>
           <div className="languages my-2 grid grid-cols-4 gap-1">
-            {!languages ? (
-              <p>Loading Languages...</p>
+            {languages.length === 0 ? (
+              <button
+                type="button"
+                className="block px-3 py-[2px] border-[1px] border-green-500 text-green-500 font-medium text-[8px] uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+              >
+                No Topic
+              </button>
             ) : (
               languages.map((language) => {
                 return (
